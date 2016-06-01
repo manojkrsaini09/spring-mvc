@@ -10,13 +10,15 @@
 	<artifactId>mavenexample</artifactId>
 
 	<properties>
-		<app.id>your-app-id</app.id>
-		<app.version>1</app.version>
+		<app.id>my-project2-1177</app.id>
+		<app.version>mvc-2</app.version>
 		<appengine.version>1.9.36</appengine.version>
 		<gcloud.plugin.version>2.0.9.74.v20150814</gcloud.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
 		<spring.version>4.2.6.RELEASE</spring.version>
+		<objectify.version>5.1.5</objectify.version>
+        <guava.version>18.0</guava.version>
 	</properties>
 
 	<prerequisites>
@@ -32,12 +34,26 @@
 			<version>1.1.1</version>
 		</dependency>
 
-			<!-- commons lang dependency -->
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.6</version>
-			</dependency>
+		<!-- commons lang dependency -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+
+		<!-- [START Objectify_Dependencies] -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.objectify</groupId>
+			<artifactId>objectify</artifactId>
+			<version>${objectify.version}</version>
+		</dependency>
+		<!-- [END Objectify_Dependencies] -->
 
 		<dependency>
 			<groupId>junit</groupId>

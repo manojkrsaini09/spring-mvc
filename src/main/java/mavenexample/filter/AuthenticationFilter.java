@@ -31,6 +31,7 @@ public class AuthenticationFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+		boolean requestOk = true;
         System.out.println("In filter");
 		UserService userService = UserServiceFactory.getUserService();
         
@@ -49,7 +50,7 @@ public class AuthenticationFilter implements Filter {
 				    	chain.doFilter(request, response);
 				    } else {
 				    	System.out.println("user is null");
-				    	res.sendRedirect(userService.createLoginURL(thisUrl));
+				    	res.sendRedirect("/login");
 				    }
 		    }else{
 		    	chain.doFilter(request, response);
@@ -76,4 +77,14 @@ public class AuthenticationFilter implements Filter {
 		
 	}
 
+	  private static String getFullRequestUrl(HttpServletRequest req) {
+		   String scheme = req.getScheme() + "://";
+		   String serverName = req.getServerName();
+		   String serverPort = (req.getServerPort() == 80) ? "" : ":" + req.getServerPort();
+		   String contextPath = req.getContextPath();
+		   /*String servletPath = req.getServletPath();
+		   String pathInfo = (req.getPathInfo() == null) ? "" : req.getPathInfo();*/
+		   //String queryString = (req.getQueryString() == null) ? "" : "?" + req.getQueryString();
+		   return scheme + serverName + serverPort + contextPath;
+		 }
 }
